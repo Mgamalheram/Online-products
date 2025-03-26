@@ -1,0 +1,264 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+@layer base {
+  input[type="number"].appearance-none::-webkit-inner-spin-button,
+  input[type="number"].appearance-none::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+  }
+
+  input[type="number"].appearance-none {
+    -moz-appearance: textfield !important;
+  }
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+}
+
+html {
+  transition: all 0.2s ease-in-out;
+  scroll-behavior: smooth;
+}
+
+body[dir="ltr"] {
+  font-family: "Work Sans";
+}
+
+body[dir="rtl"] {
+  font-family: "Cairo";
+}
+
+html.light {
+  @apply text-black bg-body;
+}
+html.dark {
+  @apply bg-dark-body text-white;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a1a0a0;
+  border-radius: 5px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a0a0;
+}
+
+.box-base {
+  @apply rounded-md bg-white p-4 dark:bg-box-dark;
+  box-shadow: 0 2px 8px #2f2b3d1f, 0 0 transparent, 0 0 transparent;
+}
+
+.base-btn {
+  @apply flex h-[40px] w-full items-center justify-center rounded-md border border-primary bg-primary font-medium text-white transition-all;
+  box-shadow: 0px 2px 10px 2px #0000001a;
+  &:hover {
+    @apply bg-transparent text-primary;
+  }
+}
+
+.base-btn-white {
+  @apply flex h-[40px] w-full items-center justify-center rounded-md border border-primary bg-transparent font-medium text-primary transition-all;
+  &:hover {
+    @apply bg-primary text-white;
+  }
+}
+
+.input-wrapper {
+  @apply relative h-[40px] rounded-md border dark:border-gray-500;
+  input:not(.search-input),
+  textarea,
+  .inputMulti {
+    @apply relative flex h-full w-full appearance-none items-center border-none bg-transparent text-sm focus:outline-none dark:placeholder:text-white;
+  }
+  .search-input {
+    @apply h-[35px] w-full rounded-lg border border-border px-3 outline-none placeholder:text-sm bg-transparent text-black;
+  }
+  i {
+    @apply absolute start-0 top-1/2 flex h-full w-[40px] -translate-y-1/2 items-center justify-center;
+  }
+  &.disabled {
+    i {
+      @apply text-gray-300 dark:text-gray-500;
+    }
+    input:disabled,
+    textarea:disabled {
+      @apply cursor-not-allowed bg-body placeholder:text-gray-300 dark:bg-gray-300 placeholder:dark:text-gray-500;
+    }
+    span[disabled="true"] {
+      @apply cursor-not-allowed bg-body dark:bg-gray-300;
+      p[disabled="true"] {
+        @apply text-gray-300 dark:text-gray-500;
+      }
+    }
+  }
+}
+label {
+  @apply text-sm;
+}
+
+.p-datatable .p-datatable-thead > tr > th,
+.p-datatable .p-datatable-tbody > tr {
+  @apply border-b bg-transparent dark:border-gray-600 p-[0.5rem] dark:text-white;
+}
+.p-column-header-content {
+  svg {
+    @apply text-primary;
+  }
+}
+.p-datatable .p-datatable-tbody > tr > td {
+  @apply border-b dark:border-gray-600 dark:text-white;
+  padding: 0.5rem !important;
+  text-align: start;
+  font-size: 14px;
+}
+
+.p-dialog {
+  @apply rounded-md bg-white dark:bg-dark-body;
+  .p-dialog-header,
+  .p-dialog-content {
+    background: transparent !important;
+    @apply overflow-visible dark:text-white;
+  }
+}
+
+.p-breadcrumb {
+  .p-breadcrumb-list {
+    @apply flex items-center gap-2 sm:flex-nowrap flex-wrap;
+  }
+  .p-disabled,
+  .p-component:disabled {
+    opacity: 1 !important;
+  }
+  .router-link-active.router-link-exact-active {
+    span {
+      @apply font-medium text-primary opacity-100;
+    }
+  }
+  .p-menuitem-separator {
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+  }
+}
+
+.p-image-toolbar {
+  @apply overflow-hidden;
+  button {
+    background-color: #0000005d !important;
+    svg {
+      color: white !important;
+    }
+  }
+}
+
+.p-checkbox {
+  .p-checkbox-box {
+    border: 1px solid #c0bebe !important;
+    background: none !important;
+  }
+  &.p-highlight {
+    .p-checkbox-box {
+      border: none !important;
+      background: #3b82f6 !important;
+
+      svg {
+        color: #fff !important;
+      }
+    }
+  }
+}
+
+.p-inputswitch {
+  &.p-disabled {
+    opacity: 1 !important;
+  }
+
+  &.p-highlight .p-inputswitch-slider {
+    background: #3b82f6;
+  }
+}
+
+.p-slider .p-slider-range {
+  background: #3b82f6;
+}
+
+.Pagination {
+  justify-content: center;
+  .PaginationControl {
+    .Control {
+      fill: #222 !important;
+      cursor: not-allowed !important;
+      &.Control-active {
+        fill: #222 !important;
+        cursor: pointer !important;
+        &:hover {
+          fill: #222 !important;
+        }
+      }
+    }
+  }
+  .Page {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+    font: {
+      family: "Work Sans", sans-serif;
+      size: 16px;
+      weight: 600;
+    }
+    &:hover,
+    &.Page-active {
+      background-color: #121214 !important;
+      color: #fff !important;
+      border: none !important;
+    }
+  }
+}
+
+.p-radiobutton-box {
+  border: 1px solid #3b82f6;
+}
+.p-radiobutton-icon {
+  @apply bg-primary;
+}
+.p-datatable .p-datatable-tbody > tr.p-highlight {
+  @apply text-primary bg-primary bg-opacity-10;
+}
+
+.p-calendar:not(.p-calendar-disabled).p-focus > .p-inputtext {
+  @apply outline-primary;
+}
+.p-datepicker table td > span.p-highlight {
+  @apply text-primary bg-primary bg-opacity-10;
+}
+.p-datepicker table td > span:focus {
+  @apply outline-primary;
+}
